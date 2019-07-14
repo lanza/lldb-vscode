@@ -1,3 +1,4 @@
+# NOTE: At the moment this only works on Darwin.
 
 # Table of Contents
 
