@@ -59,6 +59,7 @@ class MiddlewareProtocol {
         message.arguments.attachCommands = [
           "command script import /Users/lanza/Projects/lldb-vscode/sleep.py",
         ]
+        message.arguments.stopOnEntry = true;
       }
       this.sendToLLDBSocket(message);
     } else {
