@@ -2,7 +2,7 @@
   "name": "lldb-vscode",
   "displayName": "LLDB VSCode",
   "version": "0.1.0",
-  "publisher": "lanza.io",
+  "publisher": "lanza",
   "description": "lldb-vscode adapter.",
   "author": {
     "name": "Nathan Lanza",
