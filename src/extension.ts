@@ -39,7 +39,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function freeLaunch() {
-  vscode.commands.executeCommand('editor.action.addCommentLine');
   const dc = { type: "lldb-vscode", name: "Free Launch", request: "attach" };
   vscode.debug.startDebugging(undefined, dc);
 }
