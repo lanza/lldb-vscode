@@ -4,68 +4,27 @@
 - [Introduction](#Introduction)
 - [Installation](#Installation-Visual-Studio-Code)
 - [Configurations](#configurations)
-	- [Launch Configuration Settings](#launch-configuration-settings)
-	- [Attach Configuration Settings](#attach-configuration-settings)
-	- [Example configurations](#example-configurations)
-		- [Launching](#launching)
-		- [Attach to process using process ID](#attach-using-pid)
-		- [Attach to process by name](#attach-by-name)
-		- [Loading a core file](#loading-a-core-file)
+  - [Launch Configuration Settings](#launch-configuration-settings)
+  - [Attach Configuration Settings](#attach-configuration-settings)
+  - [Example configurations](#example-configurations)
+    - [Launching](#launching)
+    - [Attach to process using process ID](#attach-using-pid)
+    - [Attach to process by name](#attach-by-name)
+    - [Loading a core file](#loading-a-core-file)
 
 # Introduction
 
-The `lldb-vscode` tool creates a command line tool that implements the [Visual
-Studio Code Debug API](https://code.visualstudio.com/docs/extensionAPI/api-debugging).
-It can be installed as an extension for the Visual Studio Code and Nuclide IDE. 
-The protocol is easy to run remotely and also can allow other tools and IDEs to
-get a full featured debugger with a well defined protocol. 
+The `lldb-vscode` extension packages the command line tool of the same name that
+implements the [Visual Studio Code Debug
+API](https://code.visualstudio.com/docs/extensionAPI/api-debugging).
 
-# Installation for Visual Studio Code
-
-Installing the plug-in involves creating a directory in the `~/.vscode/extensions` folder and copying the package.json file that is in the same directory as this
-documentation into it, and copying to symlinking a lldb-vscode binary into 
-the `bin` directory inside the plug-in directory.
-
-If you want to make a stand alone plug-in that you can send to others on unix systems:
-
-```
-$ mkdir -p ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ cp package.json ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0
-$ cd ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ cp /path/to/a/built/lldb-vscode .
-$ cp /path/to/a/built/liblldb.so .
-```
-
-
-If you want to make a stand alone plug-in that you can send to others on macOS systems:
-
-```
-$ mkdir -p ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ cp package.json ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0
-$ cd ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ cp /path/to/a/built/lldb-vscode .
-$ rsync -av /path/to/a/built/LLDB.framework LLDB.framework
-```
-
-You might need to create additional directories for the `liblldb.so` or `LLDB.framework` inside or next to the `bin` folder depending on how the [rpath](https://en.wikipedia.org/wiki/Rpath) is set in your `lldb-vscode` binary. By default the `Debug` builds of LLDB usually includes
-the current executable directory in the rpath, so these steps should work for most people.
-
-To create a plug-in that symlinks into your `lldb-vscode` in your build directory:
-
-```
-$ mkdir -p ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ cp package.json ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0
-$ cd ~/.vscode/extensions/llvm-org.lldb-vscode-0.1.0/bin
-$ ln -s /path/to/a/built/lldb-vscode
-```
-
-This is handy if you want to debug and develope the `lldb-vscode` executable when adding features or fixing bugs.
 
 # Configurations
 
-Launching to attaching require you to create a [launch configuration](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations). This file
-defines arguments that get passed to `lldb-vscode` and the configuration settings
-control how the launch or attach happens.
+Launching to attaching require you to create a [launch
+configuration](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations).
+This file defines arguments that get passed to `lldb-vscode` and the
+configuration settings control how the launch or attach happens.
 
 ## Launch Configuration Settings
 
@@ -124,12 +83,12 @@ adds `FOO=1` and `bar` to the environment:
 
 ```javascript
 {
-  "type": "lldb-vscode",
-  "request": "launch",
-  "name": "Debug",
-  "program": "/tmp/a.out",
-  "args": [ "one", "two", "three" ],
-  "env": [ "FOO=1", "BAR" ],
+"type": "lldb-vscode",
+"request": "launch",
+"name": "Debug",
+"program": "/tmp/a.out",
+"args": [ "one", "two", "three" ],
+"env": [ "FOO=1", "BAR" ],
 }
 ```
 
@@ -139,11 +98,11 @@ This will attach to a process `a.out` whose process ID is 123:
 
 ```javascript
 {
-  "type": "lldb-vscode",
-  "request": "attach",
-  "name": "Attach to PID",
-  "program": "/tmp/a.out",
-  "pid": 123
+"type": "lldb-vscode",
+"request": "attach",
+"name": "Attach to PID",
+"program": "/tmp/a.out",
+"pid": 123
 }
 ```
 
@@ -155,10 +114,10 @@ above configuration:
 
 ```javascript
 {
-  "name": "Attach to Name",
-  "type": "lldb-vscode",
-  "request": "attach",
-  "program": "/tmp/a.out",
+"name": "Attach to Name",
+"type": "lldb-vscode",
+"request": "attach",
+"program": "/tmp/a.out",
 }
 ```
 
@@ -167,11 +126,11 @@ to be launched you can add the "waitFor" key value pair:
 
 ```javascript
 {
-  "name": "Attach to Name (wait)",
-  "type": "lldb-vscode",
-  "request": "attach",
-  "program": "/tmp/a.out",
-  "waitFor": true
+"name": "Attach to Name (wait)",
+"type": "lldb-vscode",
+"request": "attach",
+"program": "/tmp/a.out",
+"waitFor": true
 }
 ```
 
@@ -186,10 +145,10 @@ Loading a core file can use the `"attach"` request along with the
 
 ```javascript
 {
-  "name": "Attach to Name (wait)",
-  "type": "lldb-vscode",
-  "request": "attach",
-  "attachCommands": ["target create -c /path/to/123.core /path/to/executable"],
-  "stopOnEntry": false
+"name": "Attach to Name (wait)",
+"type": "lldb-vscode",
+"request": "attach",
+"attachCommands": ["target create -c /path/to/123.core /path/to/executable"],
+"stopOnEntry": false
 }
 ```
