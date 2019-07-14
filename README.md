@@ -19,6 +19,29 @@ The `lldb-vscode` extension packages the command line tool of the same name that
 implements the [Visual Studio Code Debug
 API](https://code.visualstudio.com/docs/extensionAPI/api-debugging).
 
+lldb-vscode has two unique features. The first is that it launches lldb's
+CommandInterpreter in a Terinal pane instead of shoehorning the
+CommandInterpreter into the Debug Console as many other VSCode debug adapters do.
+
+The second is the poorly named "LLDB: Free Launch" command. This launches lldb
+and just lets you have access to the command line prompt with no target.  You
+can then use lldb as you normally would on the command line (e.g.
+`target create a.out` & `b main` & `run`) at which point VSCode will update
+with the current target once it's there.
+
+NOTE: This does not work entirely properly yet. I still need to implement this
+in lldb itself. For now, it just checks for a file `/tmp/lldbmarker` and sleeps
+until it exists at which point it continues. I suggest adding
+
+`command alias mark script import os; os.system("touch /tmp/lldbmarker")`
+
+to your `~/.lldbinit-lldb-vscode` file. With this, you can simply write
+
+    (lldb) file a.out
+    (lldb) b main
+    (lldb) r
+    (lldb) mark
+
 
 # Configurations
 
