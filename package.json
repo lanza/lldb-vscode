@@ -2,11 +2,11 @@
   "name": "lldb-vscode",
   "displayName": "LLDB VSCode",
   "version": "0.1.0",
-  "publisher": "Nathan Lanza",
+  "publisher": "lanza.io",
   "description": "lldb-vscode adapter.",
   "author": {
-    "name": "Facebook Inc.",
-    "email": "lanza@fb.com"
+    "name": "Nathan Lanza",
+    "email": "nathan@lanza.io"
   },
   "license": "MIT",
   "keywords": [
