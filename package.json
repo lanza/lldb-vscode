@@ -1,7 +1,7 @@
 {
   "name": "lldb-vscode",
   "displayName": "LLDB VSCode",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "publisher": "lanza",
   "description": "lldb-vscode adapter.",
   "author": {
@@ -9,11 +9,15 @@
     "email": "nathan@lanza.io"
   },
   "license": "MIT",
-  "keywords": ["multi-root ready"],
+  "keywords": [
+    "multi-root ready"
+  ],
   "engines": {
     "vscode": "^1.30.0"
   },
-  "categories": ["Debuggers"],
+  "categories": [
+    "Debuggers"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/lanza/lldb-vscode.git"
@@ -46,7 +50,10 @@
     "vscode-debugadapter-testsupport": "1.31.0"
   },
   "main": "./out/extension",
-  "activationEvents": ["onDebug", "onCommand:LLDBVSCode.freeLaunch"],
+  "activationEvents": [
+    "onDebug",
+    "onCommand:LLDBVSCode.freeLaunch"
+  ],
   "contributes": {
     "commands": [
       {
@@ -79,14 +86,19 @@
         },
         "configurationAttributes": {
           "launch": {
-            "required": ["program"],
+            "required": [
+              "program"
+            ],
             "properties": {
               "program": {
                 "type": "string",
                 "description": "Path to the program to debug."
               },
               "args": {
-                "type": ["array", "string"],
+                "type": [
+                  "array",
+                  "string"
+                ],
                 "description": "Program arguments.",
                 "default": []
               },
@@ -172,7 +184,10 @@
                 "description": "Path to the program to attach to."
               },
               "pid": {
-                "type": ["number", "string"],
+                "type": [
+                  "number",
+                  "string"
+                ],
                 "description": "System process ID to attach to."
               },
               "waitFor": {
@@ -261,4 +276,3 @@
     "publisherId": "fb2a1399-190a-4d68-b7e6-2c0b64524dbe"
   }
 }
-
