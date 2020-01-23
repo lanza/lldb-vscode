@@ -26,16 +26,15 @@ export function activate(context: vscode.ExtensionContext) {
   if (EMBED_DEBUG_ADAPTER) {
     const factory = new LLDBDebugAdapterDescriptorFactory();
     context.subscriptions.push(
-      vscode.debug.registerDebugAdapterDescriptorFactory(
-        "lldb-vscode",
-        factory
-      )
+      vscode.debug.registerDebugAdapterDescriptorFactory("lldb-vscode", factory)
     );
     context.subscriptions.push(factory);
   }
 
   const command = "LLDBVSCode.freeLaunch";
-  context.subscriptions.push(vscode.commands.registerCommand(command, freeLaunch));
+  context.subscriptions.push(
+    vscode.commands.registerCommand(command, freeLaunch)
+  );
 }
 
 function freeLaunch() {

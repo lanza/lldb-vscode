@@ -1,10 +1,10 @@
-//import * as vscode from "vscode";
+import * as vscode from "vscode";
 import * as process from "process";
 import { fail } from "assert";
 
 export function getLLDBPath(): string {
-  //const root = vscode.extensions.getExtension("lanza.lldb-vscode")!.extensionPath;
-  const root = "/Users/lanza/Projects/lldb-vscode/";
+  const root = vscode.extensions.getExtension("lanza.lldb-vscode")!
+    .extensionPath;
   switch (process.platform) {
     case "win32":
       return root + "/bin/windows/lldb-vscode.exe";

@@ -55,10 +55,15 @@ class MiddlewareProtocol {
     } else if (message.command === "launch") {
       this.handleLaunchRequest(message);
     } else if (message.command === "attach") {
-      if (message.arguments.attachCommands === undefined || message.arguments.attachCommands.length === 0) {
+      if (
+        message.arguments.attachCommands === undefined ||
+        message.arguments.attachCommands.length === 0
+      ) {
+        const root = vscode.extensions.getExtension("lanza.lldb-vscode")!
+          .extensionPath;
         message.arguments.attachCommands = [
-          "command script import /Users/lanza/Projects/lldb-vscode/sleep.py",
-        ]
+          "command script import " + root + "/sleep.py"
+        ];
         message.arguments.stopOnEntry = true;
       }
       this.sendToLLDBSocket(message);
