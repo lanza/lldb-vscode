@@ -1,7 +1,7 @@
 {
   "name": "lldb-vscode",
   "displayName": "LLDB VSCode",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "lanza",
   "description": "lldb-vscode adapter.",
   "author": {
@@ -45,7 +45,7 @@
     "mocha": "5.2.0",
     "tslint": "5.11.0",
     "typescript": "^3.1.6",
-    "vsce": "^1.64.0",
+    "vsce": "^1.73.0",
     "vscode": "^1.1.34",
     "vscode-debugadapter-testsupport": "1.31.0"
   },
