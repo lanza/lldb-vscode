@@ -54,6 +54,9 @@ class MiddlewareProtocol {
       this.handleInitilizeRequest(message);
     } else if (message.command === "launch") {
       this.handleLaunchRequest(message);
+    } else if (message.command === "disconnect") {
+      message.arguments.terminateDebuggee = true;
+      this.sendToLLDBSocket(message);
     } else if (message.command === "attach") {
       if (
         message.arguments.attachCommands === undefined ||
