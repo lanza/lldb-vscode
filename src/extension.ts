@@ -53,9 +53,9 @@ class LLDBDebugConfigurationProvider
    * e.g. add all missing attributes to the debug configuration.
    */
   resolveDebugConfiguration(
-    folder: WorkspaceFolder | undefined,
+    _1: WorkspaceFolder | undefined,
     config: DebugConfiguration,
-    token?: CancellationToken
+    _2?: CancellationToken
   ): ProviderResult<DebugConfiguration> {
     if (!config.program) {
       if (config.name !== "Free Launch") {
@@ -80,8 +80,8 @@ class LLDBDebugAdapterDescriptorFactory
   }
 
   createDebugAdapterDescriptor(
-    session: vscode.DebugSession,
-    executable: vscode.DebugAdapterExecutable | undefined
+    _1: vscode.DebugSession,
+    _2: vscode.DebugAdapterExecutable | undefined
   ): vscode.ProviderResult<vscode.DebugAdapterDescriptor> {
     this.logger.show();
     this.dispose();
