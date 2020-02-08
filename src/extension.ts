@@ -1,4 +1,3 @@
-// Copyright 2013-present Facebook. All Rights Reserved.
 "use strict";
 
 import * as vscode from "vscode";
