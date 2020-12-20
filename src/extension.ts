@@ -79,15 +79,23 @@ class LLDBDebugAdapterDescriptorFactory
   }
 
   createDebugAdapterDescriptor(
-    _1: vscode.DebugSession,
+    session: vscode.DebugSession,
     _2: vscode.DebugAdapterExecutable | undefined
   ): vscode.ProviderResult<vscode.DebugAdapterDescriptor> {
-    this.logger.show();
-    this.dispose();
+    const host: string | undefined = session.configuration["LLDBVSCodeHost"];
+    const port: number | undefined = session.configuration["LLDBVSCodePort"];
 
-    this.middlewareDap = new MiddlewareDap(this.logger);
-    // make VS Code connect to debug server
-    return new vscode.DebugAdapterServer(this.middlewareDap.getVSCodePort());
+    if (port == undefined) {
+      this.logger.show();
+      this.dispose();
+
+      this.middlewareDap = new MiddlewareDap(this.logger);
+      // make VS Code connect to debug server
+      return new vscode.DebugAdapterServer(this.middlewareDap.getVSCodePort());
+    }
+
+    // Connect to remote instance of lldb-vscode.
+    return new vscode.DebugAdapterServer(port, host);
   }
 
   dispose() {
