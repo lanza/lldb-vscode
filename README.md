@@ -20,7 +20,7 @@ implements the [Visual Studio Code Debug
 API](https://code.visualstudio.com/docs/extensionAPI/api-debugging).
 
 lldb-vscode has two unique features. The first is that it launches lldb's
-CommandInterpreter in a Terinal pane instead of shoehorning the
+CommandInterpreter in a Terminal pane instead of shoehorning the
 CommandInterpreter into the Debug Console as many other VSCode debug adapters do.
 
 The second is the poorly named "LLDB: Free Launch" command. This launches lldb
