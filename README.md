@@ -1,4 +1,4 @@
-# NOTE: At the moment this only works on Darwin.
+# NOTE: This is no longer supported and deprecated
 
 # Table of Contents
 
